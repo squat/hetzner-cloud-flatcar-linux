@@ -14,7 +14,7 @@ resource "hcloud_server" "server" {
   # boot into rescue OS
   rescue = "linux64"
   # dummy value for the OS because Flatcar is not available
-  image       = "debian-9"
+  image       = "debian-11"
   server_type = var.server_type
   datacenter  = var.datacenter
   connection {
