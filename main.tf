@@ -30,6 +30,8 @@ resource "hcloud_server" "server" {
   provisioner "remote-exec" {
     inline = [
       "set -ex",
+      "apt-get update",
+      "apt-get install gawk -y",
       "curl -fsSLO --retry-delay 1 --retry 60 --retry-connrefused --retry-max-time 60 --connect-timeout 20 https://raw.githubusercontent.com/kinvolk/init/flatcar-master/bin/flatcar-install",
       "chmod +x flatcar-install",
       "./flatcar-install -s -i /root/ignition.json -C ${var.os_image}",
